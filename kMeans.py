@@ -8,3 +8,17 @@ print("Christian Nelson | Kanar Ibrahim")
 print("5/18/2020")
 print("DATA-51100-002, SUMMER 2020")
 print("PROGRAMMING ASSIGNMENT #2 kMeans")
+
+# Get input file name
+input_file = raw_input("Enter the name of the input file: ")
+
+# Get output file name
+output_file = raw_input("Enter the name of the output file: ")
+
+# Get the number of Clusters
+num_clusters = int(raw_input("Enter the number of Clusters: "))
+
+# Tester Code to be deleted
+print("input_file: ", input_file)
+print("output_file: ", output_file)
+print("num_clusters: ", num_clusters)
