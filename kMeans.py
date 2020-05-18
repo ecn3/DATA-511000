@@ -1,0 +1,4 @@
+# Christian Nelson | Kanar Ibrahim
+# 5/18/2020
+# DATA-51100-002, SUMMER 2020
+# PROGRAMMING ASSIGNMENT #2 kMeans
