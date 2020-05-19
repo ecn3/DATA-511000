@@ -38,7 +38,7 @@ centroids = dict(zip(range(num_clusters),input_cluster_data[0:num_clusters]))
 clusters = dict(zip(range(num_clusters),[[] for i in range(num_clusters)]))
 
 # Tester Code to be deleted
-#print("centroids: ",centroids)
+print("Starting centroids: ",centroids)
 #print("clusters: ",clusters)
 
 # create and initialize a dict for mapping points in a cluster
@@ -76,19 +76,45 @@ def assign_to_clusters(input_cluster_data, clusters, centroids, point_assignment
         # Reset centroid comparator
         centroid_comparator = 100
             
-        
+#  Update the locations of centroids of the k clusters (make a function for this also)
+def update_centroids(input_cluster_data, clusters, centroids):
+    # Initialize centroid
+    centroid = 0
+    for x in clusters:
+        # Use len to iterate of each list in the clusters dict
+        for y in range(0, len(clusters[x])):
+            # Tester Code to be deleted 
+            #print("Index: ", x, "cluster: ", clusters[x][y])
+            # Commute new centroid
+            centroid += clusters[x][y]
 
+        # Tester Code to be deleted     
+        #print("Sum of cluster: ", clusters[x], " is: ", centroid)
 
+        # Get new centroid
+        if len(clusters[x]) > 0:
+            centroid = centroid/len(clusters[x])
+            # Round centroid to 2 decimal get rid of math errors created by abs()
+            centroid = round(centroid,3)
+            # Update centroid
+            centroids[x] = centroid
 
+        # Tester Code to be deleted     
+        #print("Centroid of cluster: ", clusters[x], " is: ", centroid)
+        # Reset centroid
+        centroid = 0
 
-#  Update the locations of centroids of the k clusters (make a function for this also)TODO
-assign_to_clusters(input_cluster_data, clusters, centroids, point_assignments)
 # Reinitialize the clusters variable to empty lists TODO
 # clusters = dict(zip(range(k),[[] for i in range(k)]))
 
+
+# Algorithm calls
+assign_to_clusters(input_cluster_data, clusters, centroids, point_assignments)
+update_centroids(input_cluster_data, clusters, centroids)
 # Print the point assignments
 # print(point_assignments[0:])
 print("Clusters: ", clusters)
+print("Centroids: ", centroids)
 
 
 # Citation:
