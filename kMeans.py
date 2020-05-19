@@ -23,29 +23,29 @@ output_file = raw_input("Enter the name of the output file: ")
 num_clusters = int(raw_input("Enter the number of Clusters: "))
 
 # Tester Code to be deleted
-print("input_file: ", input_file)
-print("output_file: ", output_file)
-print("num_clusters: ", num_clusters)
+#print("input_file: ", input_file)
+#print("output_file: ", output_file)
+#print("num_clusters: ", num_clusters)
 
 # Read file
 input_cluster_data = [float(x.rstrip()) for x in open(input_file)]
 
 # Tester Code to be deleted
-print(input_cluster_data[0:])
+#print(input_cluster_data[0:])
 
 # Initialize variables for  centroids, clusters, and point assignments
 centroids = dict(zip(range(num_clusters),input_cluster_data[0:num_clusters]))
 clusters = dict(zip(range(num_clusters),[[] for i in range(num_clusters)]))
 
 # Tester Code to be deleted
-print("centroids: ",centroids)
-print("clusters: ",clusters)
+#print("centroids: ",centroids)
+#print("clusters: ",clusters)
 
 # create and initialize a dict for mapping points in a cluster
 point_assignments = {0: 1.2, 1: 3.6, 2: 5.0, 3: 5.0, 4: 7.6, 5: 10.0, 6: 3.7}
 
 # Tester Code to be deleted
-print("point_assignments: ",point_assignments)
+#print("point_assignments: ",point_assignments)
 
 # -create a variable to store old point assignments (from previous iteration)
 old_point_assignments = {}
@@ -54,7 +54,7 @@ old_point_assignments = {}
 old_point_assignments = point_assignments
 
 # Tester Code to be deleted
-print("old_point_assignments: ",old_point_assignments)
+#print("old_point_assignments: ",old_point_assignments)
 
 # Function for placing each point in the closest cluster
 def assign_to_clusters(input_cluster_data, clusters, centroids, point_assignments):
@@ -63,16 +63,16 @@ def assign_to_clusters(input_cluster_data, clusters, centroids, point_assignment
     # Iterate through each point in the point_assignments dict
     for idx, x in enumerate(point_assignments):
         # compare it against all the centroids
-        for index_nested, y in enumerate(centroids):
+        for idx_n, y in enumerate(centroids):
             # Get the difference in the centroid and the point
-            new_centroid_comparator = abs(y - x)
+            new_centroid_comparator = abs(centroids[idx_n] - point_assignments[idx])
             if centroid_comparator > new_centroid_comparator:
                 centroid_comparator = new_centroid_comparator
-                closest_index = index_nested
+                closest_index = y
         # Tester Code to be deleted        
         #print("The closest centroid to ", x, point_assignments[x], " is ", closest_index, centroids[closest_index])
         # Add point to the list of points for that cluster
-        clusters[closest_index].append(point_assignments[x])
+        clusters[closest_index].append(point_assignments[idx])
         # Reset centroid comparator
         centroid_comparator = 100
             
