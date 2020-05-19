@@ -34,9 +34,5 @@ input_cluster_data = [float(x.rstrip()) for x in open(input_file)]
 print(input_cluster_data[0:])
 
 # Initialize variables for  centroids, clusters, and point assignments
-centroids = dict(zip(range(num_clusters),input_cluster_data[0:num_clusters]))
-clusters = dict(zip(range(num_clusters),[[] for i in range(num_clusters)]))
-
-# create and initialize a dict mapping points to clusters TODO
-# -create a variable to store old point assignments (from previous iteration) TODO
-
+centroids = dict(zip(range(k),input_cluster_data[0:k])
+#clusters = dict(zip(range(k),[[] for i in range(k)]))
