@@ -42,11 +42,7 @@ print("centroids: ",centroids)
 print("clusters: ",clusters)
 
 # create and initialize a dict for mapping points in a cluster
-# TODO modify to initialize a dict full of points
-"""
-point_assignments = {}
-"""
-point_assignments = {0: 1.2, 1: 3.4, 2: 6.7, 3: 4.9, 4: 5.0, 5: 5.0}
+point_assignments = {0: 1.2, 1: 3.6, 2: 5.0, 3: 5.0, 4: 7.6, 5: 10.0, 6: 3.7}
 
 # Tester Code to be deleted
 print("point_assignments: ",point_assignments)
@@ -54,16 +50,46 @@ print("point_assignments: ",point_assignments)
 # -create a variable to store old point assignments (from previous iteration)
 old_point_assignments = {}
 
-# Save current point assignment into old point assignment variable (create a new dict from current assignment variable) TODO
+# Save current point assignment into old point assignment variable (create a new dict from current assignment variable)
 old_point_assignments = point_assignments
 
-# Place each point in the closest cluster (you should make a function that does this)TODO
-# point_assignments[j] = closest_index
+# Tester Code to be deleted
+print("old_point_assignments: ",old_point_assignments)
+
+# Function for placing each point in the closest cluster
+def assign_to_clusters(input_cluster_data, clusters, centroids, point_assignments):
+    # Initialize centroid_comparator
+    centroid_comparator = 100
+    # Iterate through each point in the point_assignments dict
+    for x in point_assignments:
+        # compare it against all the centroids
+        for y in centroids:
+            # Get the difference in the centroid and the point
+            new_centroid_comparator = abs(centroids[y] - point_assignments[x])
+            # print("point_assignment: ", x , point_assignments[x] , "centroid: ", y , centroids[y], " centroid_comparator: ", centroid_comparator)
+            if centroid_comparator > new_centroid_comparator:
+                centroid_comparator = new_centroid_comparator
+                closest_index = y
+        # Tester Code to be deleted        
+        print("The closest centroid to ", x, point_assignments[x], " is ", closest_index, centroids[closest_index])
+        centroid_comparator = 100
+            
+        
+
+
+
 
 #  Update the locations of centroids of the k clusters (make a function for this also)TODO
-
+assign_to_clusters(input_cluster_data, clusters, centroids, point_assignments)
 # Reinitialize the clusters variable to empty lists TODO
 # clusters = dict(zip(range(k),[[] for i in range(k)]))
 
 # Print the point assignments
 # print(point_assignments[0:])
+
+
+
+# Citation:
+"""
+https://www.geeksforgeeks.org/python-find-the-closest-key-in-dictionary/
+"""
