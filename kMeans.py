@@ -61,17 +61,16 @@ def assign_to_clusters(input_cluster_data, clusters, centroids, point_assignment
     # Initialize centroid_comparator
     centroid_comparator = 100
     # Iterate through each point in the point_assignments dict
-    for x in point_assignments:
+    for idx, x in enumerate(point_assignments):
         # compare it against all the centroids
-        for y in centroids:
+        for index_nested, y in enumerate(centroids):
             # Get the difference in the centroid and the point
-            new_centroid_comparator = abs(centroids[y] - point_assignments[x])
-            # print("point_assignment: ", x , point_assignments[x] , "centroid: ", y , centroids[y], " centroid_comparator: ", centroid_comparator)
+            new_centroid_comparator = abs(y - x)
             if centroid_comparator > new_centroid_comparator:
                 centroid_comparator = new_centroid_comparator
-                closest_index = y
+                closest_index = index_nested
         # Tester Code to be deleted        
-        print("The closest centroid to ", x, point_assignments[x], " is ", closest_index, centroids[closest_index])
+        #print("The closest centroid to ", x, point_assignments[x], " is ", closest_index, centroids[closest_index])
         # Add point to the list of points for that cluster
         clusters[closest_index].append(point_assignments[x])
         # Reset centroid comparator
