@@ -72,6 +72,9 @@ def assign_to_clusters(input_cluster_data, clusters, centroids, point_assignment
                 closest_index = y
         # Tester Code to be deleted        
         print("The closest centroid to ", x, point_assignments[x], " is ", closest_index, centroids[closest_index])
+        # Add point to the list of points for that cluster
+        clusters[closest_index].append(point_assignments[x])
+        # Reset centroid comparator
         centroid_comparator = 100
             
         
@@ -86,7 +89,7 @@ assign_to_clusters(input_cluster_data, clusters, centroids, point_assignments)
 
 # Print the point assignments
 # print(point_assignments[0:])
-
+print("Clusters: ", clusters)
 
 
 # Citation:
