@@ -38,5 +38,18 @@ centroids = dict(zip(range(num_clusters),input_cluster_data[0:num_clusters]))
 clusters = dict(zip(range(num_clusters),[[] for i in range(num_clusters)]))
 
 # create and initialize a dict mapping points to clusters TODO
+
 # -create a variable to store old point assignments (from previous iteration) TODO
 
+# Save current point assignment into old point assignment variable (create a new dict from current assignment variable) TODO
+
+# Place each point in the closest cluster (you should make a function that does this)TODO
+# point_assignments[j] = closest_index
+
+#  Update the locations of centroids of the k clusters (make a function for this also)TODO
+
+# Reinitialize the clusters variable to empty lists TODO
+# clusters = dict(zip(range(k),[[] for i in range(k)]))
+
+# Print the point assignments
+# print(point_assignments[0:])
