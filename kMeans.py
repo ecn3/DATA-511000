@@ -41,15 +41,21 @@ clusters = dict(zip(range(num_clusters),[[] for i in range(num_clusters)]))
 print("centroids: ",centroids)
 print("clusters: ",clusters)
 
-# create and initialize an empty dict for mapping points in a cluster
+# create and initialize a dict for mapping points in a cluster
+# TODO modify to initialize a dict full of points
+"""
 point_assignments = {}
+"""
+point_assignments = {0: 1.2, 1: 3.4, 2: 6.7, 3: 4.9, 4: 5.0, 5: 5.0}
 
 # Tester Code to be deleted
 print("point_assignments: ",point_assignments)
 
-# -create a variable to store old point assignments (from previous iteration) TODO
+# -create a variable to store old point assignments (from previous iteration)
+old_point_assignments = {}
 
 # Save current point assignment into old point assignment variable (create a new dict from current assignment variable) TODO
+old_point_assignments = point_assignments
 
 # Place each point in the closest cluster (you should make a function that does this)TODO
 # point_assignments[j] = closest_index
