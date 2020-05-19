@@ -81,26 +81,14 @@ def update_centroids(input_cluster_data, clusters, centroids):
     # Initialize centroid
     centroid = 0
     for x in clusters:
-        # Use len to iterate of each list in the clusters dict
-        for y in range(0, len(clusters[x])):
-            # Tester Code to be deleted 
-            #print("Index: ", x, "cluster: ", clusters[x][y])
-            # Commute new centroid
-            centroid += clusters[x][y]
-
-        # Tester Code to be deleted     
-        #print("Sum of cluster: ", clusters[x], " is: ", centroid)
-
         # Get new centroid
         if len(clusters[x]) > 0:
+            centroid = sum(clusters[x])
             centroid = centroid/len(clusters[x])
             # Round centroid to 2 decimal get rid of math errors created by abs()
             centroid = round(centroid,3)
             # Update centroid
             centroids[x] = centroid
-
-        # Tester Code to be deleted     
-        #print("Centroid of cluster: ", clusters[x], " is: ", centroid)
         # Reset centroid
         centroid = 0
 
