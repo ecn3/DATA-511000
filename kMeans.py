@@ -19,7 +19,7 @@ input_file = 'prog2-input-data.txt'
 # Get output file name
 output_file = raw_input("Enter the name of the output file: ")
 
-# Get the number of Clusters
+# Get the number of Clusters(k is num_clusters)
 num_clusters = int(raw_input("Enter the number of Clusters: "))
 
 # Tester Code to be deleted
@@ -37,7 +37,15 @@ print(input_cluster_data[0:])
 centroids = dict(zip(range(num_clusters),input_cluster_data[0:num_clusters]))
 clusters = dict(zip(range(num_clusters),[[] for i in range(num_clusters)]))
 
-# create and initialize a dict mapping points to clusters TODO
+# Tester Code to be deleted
+print("centroids: ",centroids)
+print("clusters: ",clusters)
+
+# create and initialize an empty dict for mapping points in a cluster
+point_assignments = {}
+
+# Tester Code to be deleted
+print("point_assignments: ",point_assignments)
 
 # -create a variable to store old point assignments (from previous iteration) TODO
 
