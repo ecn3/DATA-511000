@@ -3,6 +3,9 @@
 # DATA-51100-002, SUMMER 2020
 # PROGRAMMING ASSIGNMENT #2 kMeans
 
+# Format String
+fmt = "Point {} in cluster {}\n"
+
 # Print header info to screen
 print("Christian Nelson | Kanar Ibrahim")
 print("5/18/2020")
@@ -29,7 +32,6 @@ num_clusters = int(raw_input("Enter the number of Clusters: "))
 
 # Read file
 input_cluster_data = [float(x.rstrip()) for x in open(input_file)]
-
 # Tester Code to be deleted
 #print(input_cluster_data[0:])
 
@@ -38,12 +40,13 @@ centroids = dict(zip(range(num_clusters),input_cluster_data[0:num_clusters]))
 clusters = dict(zip(range(num_clusters),[[] for i in range(num_clusters)]))
 
 # Tester Code to be deleted
-print("Starting centroids: ",centroids)
+#print("Starting centroids: ",centroids)
 #print("clusters: ",clusters)
 
 # create and initialize a dict for mapping points in a cluster
 point_assignments = {0: 1.2, 1: 3.6, 2: 5.0, 3: 5.0, 4: 7.6, 5: 10.0, 6: 3.7}
-
+# print list
+print_point_assignments = {}
 # Tester Code to be deleted
 #print("point_assignments: ",point_assignments)
 
@@ -69,6 +72,8 @@ def assign_to_clusters(input_cluster_data, clusters, centroids, point_assignment
             if centroid_comparator > new_centroid_comparator:
                 centroid_comparator = new_centroid_comparator
                 closest_index = y
+                # Assign the cluster location to our print list
+                print_point_assignments[x] = idx_n
         # Tester Code to be deleted        
         #print("The closest centroid to ", x, point_assignments[x], " is ", closest_index, centroids[closest_index])
         # Add point to the list of points for that cluster
@@ -83,7 +88,9 @@ def update_centroids(input_cluster_data, clusters, centroids):
     for x in clusters:
         # Get new centroid
         if len(clusters[x]) > 0:
+            # Get the sum of the cluster
             centroid = sum(clusters[x])
+            # commute the mean or centroid
             centroid = centroid/len(clusters[x])
             # Round centroid to 2 decimal get rid of math errors created by abs()
             centroid = round(centroid,3)
@@ -92,17 +99,25 @@ def update_centroids(input_cluster_data, clusters, centroids):
         # Reset centroid
         centroid = 0
 
-# Reinitialize the clusters variable to empty lists TODO
-# clusters = dict(zip(range(k),[[] for i in range(k)]))
-
-
 # Algorithm calls
 assign_to_clusters(input_cluster_data, clusters, centroids, point_assignments)
 update_centroids(input_cluster_data, clusters, centroids)
+
+# Tester Code to be deleted  
+#print("Clusters: ", clusters)
+
+# Reinitialize the clusters variable to empty lists
+clusters = dict(zip(range(num_clusters),[[] for i in range(num_clusters)]))
+
 # Print the point assignments
-# print(point_assignments[0:])
-print("Clusters: ", clusters)
-print("Centroids: ", centroids)
+f1 = open('test.txt', 'wb')
+for x in point_assignments:
+    f1.write(fmt.format(point_assignments[x], print_point_assignments[x]))
+f1.close()
+
+# Tester Code to be deleted  
+#print("Clusters cleared : ", clusters)
+#print("Centroids: ", centroids)
 
 
 # Citation:
