@@ -1,0 +1,7 @@
+Point 1.2 in cluster 2
+Point 3.6 in cluster 7
+Point 5.0 in cluster 1
+Point 5.0 in cluster 1
+Point 7.6 in cluster 5
+Point 10.0 in cluster 4
+Point 3.7 in cluster 7
