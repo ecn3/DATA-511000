@@ -12,18 +12,14 @@ print("5/18/2020")
 print("DATA-51100-002, SUMMER 2020")
 print("PROGRAMMING ASSIGNMENT #2 kMeans")
 
-# Get input file name
-input_file = raw_input("Enter the name of the input file: ")
-
-
-# Tester Code to be deleted
-input_file = 'prog2-input-data.txt'
+# Get input file name not using raw_input as that is for python 2 and causes errors
+input_file = input("Enter the name of the input file, ex 'prog2-input-data.txt': ")
 
 # Get output file name
-output_file = raw_input("Enter the name of the output file: ")
+output_file = input("Enter the name of the output file: ")
 
 # Get the number of Clusters(k is num_clusters)
-num_clusters = int(raw_input("Enter the number of Clusters: "))
+num_clusters = int(input("Enter the number of Clusters: "))
 
 # Tester Code to be deleted
 #print("input_file: ", input_file)
@@ -110,7 +106,7 @@ update_centroids(input_cluster_data, clusters, centroids)
 clusters = dict(zip(range(num_clusters),[[] for i in range(num_clusters)]))
 
 # Print the point assignments
-f1 = open('test.txt', 'wb')
+f1 = open(output_file, 'wb')
 for x in point_assignments:
     f1.write(fmt.format(point_assignments[x], print_point_assignments[x]))
 f1.close()
