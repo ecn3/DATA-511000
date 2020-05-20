@@ -21,39 +21,23 @@ output_file = input("Enter the name of the output file: ")
 # Get the number of Clusters(k is num_clusters)
 num_clusters = int(input("Enter the number of Clusters: "))
 
-# Tester Code to be deleted
-#print("input_file: ", input_file)
-#print("output_file: ", output_file)
-#print("num_clusters: ", num_clusters)
-
 # Read file
 input_cluster_data = [float(x.rstrip()) for x in open(input_file)]
-# Tester Code to be deleted
-#print(input_cluster_data[0:])
 
 # Initialize variables for  centroids, clusters, and point assignments
 centroids = dict(zip(range(num_clusters),input_cluster_data[0:num_clusters]))
 clusters = dict(zip(range(num_clusters),[[] for i in range(num_clusters)]))
 
-# Tester Code to be deleted
-#print("Starting centroids: ",centroids)
-#print("clusters: ",clusters)
-
 # create and initialize a dict for mapping points in a cluster
 point_assignments = {0: 1.2, 1: 3.6, 2: 5.0, 3: 5.0, 4: 7.6, 5: 10.0, 6: 3.7}
 # print list
 print_point_assignments = {}
-# Tester Code to be deleted
-#print("point_assignments: ",point_assignments)
 
 # -create a variable to store old point assignments (from previous iteration)
 old_point_assignments = {}
 
 # Save current point assignment into old point assignment variable (create a new dict from current assignment variable)
 old_point_assignments = point_assignments
-
-# Tester Code to be deleted
-#print("old_point_assignments: ",old_point_assignments)
 
 # Function for placing each point in the closest cluster
 def assign_to_clusters(input_cluster_data, clusters, centroids, point_assignments):
@@ -70,8 +54,6 @@ def assign_to_clusters(input_cluster_data, clusters, centroids, point_assignment
                 closest_index = y
                 # Assign the cluster location to our print list
                 print_point_assignments[x] = idx_n
-        # Tester Code to be deleted        
-        #print("The closest centroid to ", x, point_assignments[x], " is ", closest_index, centroids[closest_index])
         # Add point to the list of points for that cluster
         clusters[closest_index].append(point_assignments[idx])
         # Reset centroid comparator
@@ -99,9 +81,6 @@ def update_centroids(input_cluster_data, clusters, centroids):
 assign_to_clusters(input_cluster_data, clusters, centroids, point_assignments)
 update_centroids(input_cluster_data, clusters, centroids)
 
-# Tester Code to be deleted  
-#print("Clusters: ", clusters)
-
 # Reinitialize the clusters variable to empty lists
 clusters = dict(zip(range(num_clusters),[[] for i in range(num_clusters)]))
 
@@ -110,11 +89,6 @@ f1 = open(output_file, 'wb')
 for x in point_assignments:
     f1.write(fmt.format(point_assignments[x], print_point_assignments[x]))
 f1.close()
-
-# Tester Code to be deleted  
-#print("Clusters cleared : ", clusters)
-#print("Centroids: ", centroids)
-
 
 # Citation:
 """
