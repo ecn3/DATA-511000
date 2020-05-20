@@ -5,6 +5,7 @@
 
 # Format String
 fmt = "Point {} in cluster {}\n"
+fmt = "Point {} in cluster {}"
 
 # Print header info to screen
 print("Christian Nelson | Kanar Ibrahim")
@@ -13,8 +14,9 @@ print("DATA-51100-002, SUMMER 2020")
 print("PROGRAMMING ASSIGNMENT #2 kMeans")
 
 # Get input file name not using raw_input as that is for python 2 and causes errors
-input_file = input("Enter the name of the input file, ex 'prog2-input-data.txt': ")
-
+input_file = input("Enter the name of the input file: ")
+# Set the file name for ease of user
+input_file = 'prog2-input-data.txt'
 # Get output file name
 output_file = input("Enter the name of the output file: ")
 
@@ -88,6 +90,7 @@ clusters = dict(zip(range(num_clusters),[[] for i in range(num_clusters)]))
 f1 = open(output_file, 'wb')
 for x in point_assignments:
     f1.write(fmt.format(point_assignments[x], print_point_assignments[x]))
+    print(fmt2.format(point_assignments[x], print_point_assignments[x]))
 f1.close()
 
 # Citation:
